@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admin_users")
+}
+
+model Customer {
+  id        Int       @id @default(autoincrement())
+  fullName  String
+  email     String
+  phone     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  bookings  Booking[]
+
+  @@map("customers")
+}
+
+model Dog {
+  id        Int      @id @default(autoincrement())
+  name      String
+  breed     String
+  bookingId Int
+  booking   Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("dogs")
+}
+
+model Kennel {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  size        String    @default("STANDARD")
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  bookings    Booking[] @relation("BookingKennels")
+
+  @@map("kennels")
+}
+
+model Booking {
+  id                   Int           @id @default(autoincrement())
+  referenceNumber      String        @unique
+  customerId           Int
+  customer             Customer      @relation(fields: [customerId], references: [id])
+  kennels              Kennel[]      @relation("BookingKennels")
+  dogs                 Dog[]
+  numberOfDogs         Int
+  checkInDate          DateTime
+  checkOutDate         DateTime
+  numberOfNights       Int
+  pricePerNight        Float
+  totalPrice           Float
+  requiresQuote        Boolean       @default(false)
+  status               BookingStatus @default(PENDING)
+  feedingInstructions  String?
+  medicalInfo          String?
+  specialRequirements  String?
+  additionalNotes      String?
+  emailSent            Boolean       @default(false)
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+
+  @@map("bookings")
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("contact_messages")
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  price       Float?
+  icon        String?
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("services")
+}
+
+model Facility {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  imageUrl    String?
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("facilities")
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  REJECTED
+  CANCELLED
+  COMPLETED
+}

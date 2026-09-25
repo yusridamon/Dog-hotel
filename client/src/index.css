@@ -1,0 +1,111 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Doggo'tel brand colours */
+  --brown-900: #3b1f0a;
+  --brown-800: #5c2e0e;
+  --brown-700: #7a3d12;
+  --brown-600: #964d1a;
+  --brown-500: #b86a2e;
+  --brown-300: #d4a574;
+  --brown-100: #f0dcc8;
+  --brown-50:  #faf4ed;
+
+  --olive-900: #3a4a1a;
+  --olive-800: #4a5e20;
+  --olive-700: #5c7528;
+  --olive-600: #6e8c30;
+  --olive-500: #7fa33a;
+  --olive-400: #96b84d;
+  --olive-200: #c8d98a;
+  --olive-100: #e2edbb;
+  --olive-50:  #f4f8e4;
+
+  --beige:     #f5ede0;
+  --beige-dark:#ede0cc;
+  --cream:     #faf6f0;
+
+  /* Keep green aliases pointing to olive for backwards compat */
+  --green-900: #3a4a1a;
+  --green-800: #4a5e20;
+  --green-700: #5c7528;
+  --green-600: #6e8c30;
+  --green-500: #7fa33a;
+  --green-400: #96b84d;
+  --green-100: #e2edbb;
+  --green-50:  #f4f8e4;
+
+  --amber-500: #f59e0b;
+  --amber-400: #fbbf24;
+
+  --gray-900: #2c1f14;
+  --gray-800: #3d2b1a;
+  --gray-700: #5a3e28;
+  --gray-600: #7a5c42;
+  --gray-500: #9c7d62;
+  --gray-400: #b89b82;
+  --gray-300: #d4bfaa;
+  --gray-200: #e8d8c8;
+  --gray-100: #f2e8de;
+  --gray-50:  #faf6f2;
+
+  --white: #ffffff;
+  --red-500: #ef4444;
+  --red-100: #fee2e2;
+  --blue-500: #3b82f6;
+  --blue-100: #dbeafe;
+
+  --shadow-sm: 0 1px 2px rgba(59,31,10,.06);
+  --shadow:    0 1px 3px rgba(59,31,10,.12), 0 1px 2px rgba(59,31,10,.08);
+  --shadow-md: 0 4px 6px rgba(59,31,10,.10), 0 2px 4px rgba(59,31,10,.07);
+  --shadow-lg: 0 10px 15px rgba(59,31,10,.12), 0 4px 6px rgba(59,31,10,.07);
+  --shadow-xl: 0 20px 25px rgba(59,31,10,.12), 0 10px 10px rgba(59,31,10,.06);
+
+  --radius-sm: 6px;
+  --radius:    10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+body {
+  background: var(--cream);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--gray-800);
+  background: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+button { cursor: pointer; font-family: inherit; }
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--gray-100); }
+::-webkit-scrollbar-thumb { background: var(--gray-400); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gray-500); }

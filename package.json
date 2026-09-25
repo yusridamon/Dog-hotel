@@ -1,0 +1,16 @@
+{
+  "name": "dog-hotel",
+  "version": "1.0.0",
+  "description": "Pawsome Stay Dog Hotel - Full Stack Application",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm start --prefix client",
+    "db:generate": "npm run db:generate --prefix server",
+    "db:push": "npm run db:push --prefix server",
+    "db:migrate": "npm run db:migrate --prefix server",
+    "db:seed": "npm run db:seed --prefix server",
+    "db:studio": "npm run db:studio --prefix server"
+  },
+  "private": true
+}
