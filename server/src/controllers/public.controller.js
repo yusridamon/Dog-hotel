@@ -26,7 +26,7 @@ const getFacilities = async (req, res) => {
 
 const getPricing = async (req, res) => {
   res.json({
-    pricePerDogPerNight: parseFloat(process.env.PRICE_PER_DOG_PER_NIGHT) || 250,
+    pricePerDogPerNight: parseFloat(process.env.PRICE_PER_DOG_PER_NIGHT) || 200,
     currency: 'ZAR',
     currencySymbol: 'R',
     // Stays longer than this many nights are priced separately via a manual quote.

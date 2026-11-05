@@ -8,7 +8,10 @@ const router = express.Router();
 router.post(
   '/login',
   [
-    body('email').isEmail().normalizeEmail(),
+    // Do not normalizeEmail(): it strips dots from Gmail local parts
+    // (e.g. doggotel.cpt@gmail.com -> doggotelcpt@gmail.com), which would not
+    // match the stored address. Compare the email exactly as entered.
+    body('email').isEmail(),
     body('password').notEmpty().isLength({ min: 6 }),
   ],
   authController.login

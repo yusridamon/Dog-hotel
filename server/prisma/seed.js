@@ -7,19 +7,19 @@ async function main() {
   console.log('Seeding database...');
 
   // Create admin user
-  const hashedPassword = await bcrypt.hash('admin123', 10);
-  const existingAdmin = await prisma.adminUser.findUnique({ where: { email: 'admin@doghotel.com' } });
+  const hashedPassword = await bcrypt.hash('Triple!123', 10);
+  const existingAdmin = await prisma.adminUser.findUnique({ where: { email: 'doggotel.cpt@gmail.com' } });
   if (!existingAdmin) {
     await prisma.adminUser.create({
       data: {
-        email: 'admin@doghotel.com',
+        email: 'doggotel.cpt@gmail.com',
         password: hashedPassword,
-        name: 'Hotel Admin',
+        name: 'Doggotel Admin',
         role: 'admin',
       },
     });
   }
-  console.log('Admin user: admin@doghotel.com / admin123');
+  console.log('Admin user: doggotel.cpt@gmail.com / Triple!123');
 
   // Create 12 identical kennels named 1..12
   const kennelCount = await prisma.kennel.count();

@@ -96,7 +96,7 @@ const sendBookingConfirmation = async (booking, customer, dogs) => {
 
   try {
     await transporter.sendMail({
-      from: process.env.EMAIL_FROM || 'Dog Hotel <noreply@doghotel.com>',
+      from: process.env.EMAIL_FROM || "Doggo'tel <doggotel.cpt@gmail.com>",
       to: customer.email,
       subject: `Booking Received - ${booking.referenceNumber} | Doggo'tel`,
       html,

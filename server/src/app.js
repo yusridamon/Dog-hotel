@@ -29,6 +29,11 @@ const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:3000')
   .map((o) => o.trim())
   .filter(Boolean);
 
+// Any localhost/127.0.0.1 origin (any port) is allowed in non-production so the
+// CRA dev proxy (which forwards requests tagged with its own :5000 origin) and
+// direct browser calls from :3000 both work without extra config.
+const isLocalOrigin = (origin) => /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
+
 app.use(cors({
   origin: (origin, callback) => {
     // Allow non-browser / same-origin requests (no Origin header) such as
@@ -36,7 +41,12 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
-    return callback(new Error(`Origin ${origin} not allowed by CORS`));
+    if (process.env.NODE_ENV !== 'production' && isLocalOrigin(origin)) {
+      return callback(null, true);
+    }
+    // Reject by disabling CORS headers rather than throwing, so the browser
+    // gets a clean CORS failure instead of the API returning a 500.
+    return callback(null, false);
   },
   credentials: true,
 }));

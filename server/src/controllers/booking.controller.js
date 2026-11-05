@@ -4,7 +4,7 @@ const { generateReferenceNumber, calculateNights, calculatePrice } = require('..
 const { sendBookingConfirmation } = require('../utils/email');
 const { findAvailableKennels, countAvailableKennels } = require('../utils/kennels');
 
-const PRICE_PER_DOG_PER_NIGHT = parseFloat(process.env.PRICE_PER_DOG_PER_NIGHT) || 250;
+const PRICE_PER_DOG_PER_NIGHT = parseFloat(process.env.PRICE_PER_DOG_PER_NIGHT) || 200;
 
 // Stays longer than this many nights are priced separately via a manual quote
 // rather than auto-calculated. Change this single constant to adjust the threshold.

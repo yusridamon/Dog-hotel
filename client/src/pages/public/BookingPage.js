@@ -22,7 +22,7 @@ const focusOut = (e) => e.target.style.borderColor = 'var(--gray-200)';
 const BookingPage = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
-  const [pricing, setPricing] = useState({ pricePerDogPerNight: 250, currencySymbol: 'R' });
+  const [pricing, setPricing] = useState({ pricePerDogPerNight: 200, currencySymbol: 'R' });
   const [submitting, setSubmitting] = useState(false);
 
   const [form, setForm] = useState({

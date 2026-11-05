@@ -65,7 +65,7 @@ const AdminLoginPage = () => {
                 type="email" required autoComplete="email"
                 value={form.email}
                 onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                placeholder="admin@doghotel.com"
+                placeholder="you@example.com"
                 style={inputStyle}
                 onFocus={e => e.target.style.borderColor = 'var(--green-500)'}
                 onBlur={e => e.target.style.borderColor = 'var(--gray-200)'}
@@ -109,11 +109,6 @@ const AdminLoginPage = () => {
               <LogIn size={18} /> {loading ? 'Signing in…' : 'Sign In'}
             </button>
           </form>
-
-          <div style={{ marginTop: 20, padding: '12px 16px', background: 'var(--gray-50)', borderRadius: 'var(--radius)', border: '1px solid var(--gray-200)' }}>
-            <p style={{ fontSize: 12, color: 'var(--gray-500)', marginBottom: 2 }}>Default credentials (change after setup):</p>
-            <p style={{ fontSize: 12, color: 'var(--gray-600)', fontFamily: 'monospace' }}>admin@doghotel.com / admin123</p>
-          </div>
         </div>
       </div>
     </div>
